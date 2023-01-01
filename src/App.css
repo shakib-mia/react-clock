@@ -1,37 +1,16 @@
-#second {
-  animation-name: anim;
-  animation-timing-function: linear;
-  animation-duration: 1s;
-  animation-iteration-count: infinite;
-  left: 98.5%;
-}
-
-#min {
-  animation-name: min;
-  animation-timing-function: linear;
-  animation-iteration-count: infinite;
+#bar {
+  animation-name: rotate;
   animation-duration: 60s;
-  left: 98.5%;
+  animation-iteration-count: infinite;
+  transform-origin: top left;
+  animation-timing-function: linear;
 }
 
-@keyframes anim {
-  0% {
-    left: 0
-  }
-  50% {
-    left: 98.5%
-  }
-  100% {
-    left: 98.5%;
-  }
-}
-
-@keyframes min {
+@keyframes rotate {
   from {
-    left: 0;
+    rotate: 0;
   }
-  
   to {
-    left: 98.5%;
+    rotate: 360deg;
   }
 }
