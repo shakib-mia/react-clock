@@ -2,7 +2,6 @@
   animation-name: rotate;
   animation-duration: 60s;
   animation-iteration-count: infinite;
-  transform-origin: top left;
   animation-timing-function: linear;
 }
 
@@ -13,4 +12,8 @@
   to {
     rotate: 360deg;
   }
+}
+
+#container {
+  transform: rotate(-90deg);
 }
