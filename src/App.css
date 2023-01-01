@@ -1,15 +1,13 @@
 #secondBar {
-  animation-name: rotate;
-  animation-duration: 60s;
-  animation-iteration-count: infinite;
-  animation-timing-function: linear;
+  /* transition: all 1s; */
+  /* transition-timing-function: linear; */
 }
-#minBar {
+/* #minBar {
   animation-name: rotate;
   animation-duration: 3600s;
   animation-iteration-count: infinite;
   animation-timing-function: linear;
-}
+} */
 #bar {
   animation-name: rotate;
   animation-duration: 3600s;
