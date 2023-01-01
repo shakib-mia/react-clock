@@ -4,9 +4,15 @@
   animation-iteration-count: infinite;
   animation-timing-function: linear;
 }
+#minBar {
+  animation-name: rotate;
+  animation-duration: 3600s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
 #bar {
   animation-name: rotate;
-  animation-duration: 2600s;
+  animation-duration: 3600s;
   animation-iteration-count: infinite;
   animation-timing-function: linear;
 }
