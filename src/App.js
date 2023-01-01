@@ -22,7 +22,7 @@ function App() {
   const [min, setMin] = useState(date.getMinutes());
   
 
-  setInterval(() => setSec(new Date().getSeconds()), 1000);
+  setInterval(() => setSec(new Date().getSeconds() + 1), 1000);
   setInterval(() => setMin(new Date().getMinutes() + 1), 60000)
 
   
