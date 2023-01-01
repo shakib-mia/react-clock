@@ -1,6 +1,12 @@
-#bar {
+#secondBar {
   animation-name: rotate;
   animation-duration: 60s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+#bar {
+  animation-name: rotate;
+  animation-duration: 2600s;
   animation-iteration-count: infinite;
   animation-timing-function: linear;
 }
