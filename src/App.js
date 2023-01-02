@@ -19,7 +19,7 @@ function App() {
   const hour = parseInt(time.split(":")[0])
   // const min = parseInt(time.split(':')[1].split(" ")[0]);
   const [sec, setSec] = useState(date.getSeconds());
-  const [min, setMin] = useState(date.getMinutes());
+  const min = date.getMinutes();
   
 
   setInterval(() => setSec(new Date().getSeconds()), 1000);
@@ -33,8 +33,11 @@ function App() {
   //   sec === 60 && setMin(min + 1);
   // }, [sec])
   
-  const hourExtra = 1/12;
+  const hourExtra = (hour * 30) + (min / 3);
+  // console.log(time.split(":")[1].split(" ")[0]);
   // console.log(min * 6);
+
+  console.log((hour * 30) + (min / 3));
 
   /**
    * 
@@ -60,7 +63,7 @@ function App() {
         <span className='absolute top-0 bottom-0 left-0 right-0 m-auto inline-block w-3 h-3 bg-red-900 z-50 rounded-full'></span>
         <span className='absolute inline-block w-40 h-[1px] bg-red-900 secTick' style={{rotate: sec * 6 + "deg"}}></span>
         <span className='absolute inline-block w-36 h-[3px] bg-black minTick' style={{rotate: min * 6 + "deg"}}></span>
-        <span className='absolute inline-block w-32 h-[5px] bg-black hourTick' style={{rotate: (hour * 30) + "deg"}}></span>
+        <span className='absolute inline-block w-32 h-[5px] bg-black hourTick' style={{rotate: hourExtra + "deg"}}></span>
       </div>
     </div>
   );
