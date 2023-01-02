@@ -23,14 +23,18 @@ function App() {
   
 
   setInterval(() => setSec(new Date().getSeconds()), 1000);
-  setInterval(() => setMin(new Date().getMinutes()), 60000)
+  // useEffect(() => {
+    // setInterval(() => console.log(new Date().getMinutes()), 60000)
+  // }, [sec])
 
+  // console.log("object");
+  // const [minutes, setMinutes] = useState(0);
   // useEffect(() => {
   //   sec === 60 && setMin(min + 1);
   // }, [sec])
   
-  const hourExtra = (hour * 5 / 360) * 30;
-  const [minutes, setMinutes] = useState(0)
+  const hourExtra = 1/12;
+  // console.log(min * 6);
 
   /**
    * 
@@ -53,9 +57,9 @@ function App() {
   return (
     <div className='bg-gray-600 h-screen flex items-center'>
       <div className="relative mx-auto bg-gray-300 rounded-full w-80 h-80" id='container'>
-        <span className='absolute top-0 bottom-0 left-0 right-0 m-auto inline-block w-3 h-3 bg-black rounded-full'></span>
-        <span className='absolute inline-block w-40 h-[1px] bg-black secTick' style={{rotate: sec * 6 + "deg"}}></span>
-        <span className='absolute inline-block w-36 h-[3px] bg-black minTick' style={{rotate: min * 6 + ((sec * 6) / 360) + "deg"}}></span>
+        <span className='absolute top-0 bottom-0 left-0 right-0 m-auto inline-block w-3 h-3 bg-red-900 z-50 rounded-full'></span>
+        <span className='absolute inline-block w-40 h-[1px] bg-red-900 secTick' style={{rotate: sec * 6 + "deg"}}></span>
+        <span className='absolute inline-block w-36 h-[3px] bg-black minTick' style={{rotate: min * 6 + "deg"}}></span>
         <span className='absolute inline-block w-32 h-[5px] bg-black hourTick' style={{rotate: (hour * 30) + "deg"}}></span>
       </div>
     </div>
