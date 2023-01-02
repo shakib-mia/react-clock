@@ -16,8 +16,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "deploy": "npm run build && npx netlify deploy --prod",
-    "push": "git add . && git commit -m 'hours fixed' && git push"
+    "deploy": "npm run build && npx netlify deploy --prod"
   },
   "eslintConfig": {
     "extends": [
