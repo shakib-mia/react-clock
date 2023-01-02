@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import './App.css';
 
 function App() {
@@ -15,7 +15,7 @@ function App() {
   }
   const date = new Date()
 
-  const time = formatAMPM(new Date);
+  const time = formatAMPM(new Date());
   const hour = parseInt(time.split(":")[0])
   // const min = parseInt(time.split(':')[1].split(" ")[0]);
   const [sec, setSec] = useState(date.getSeconds());
@@ -51,7 +51,7 @@ function App() {
 
   // console.log(hourExtra);
 
-  const test = min * 6 + (sec * (6/360))
+  // const test = min * 6 + (sec * (6/360))
 
   // useEffect(() => {
   //   setMin(test)
