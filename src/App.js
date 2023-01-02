@@ -46,9 +46,9 @@ function App() {
 
   const test = min * 6 + (sec * (6/360))
 
-  useEffect(() => {
-    setMin(test)
-  }, [test])
+  // useEffect(() => {
+  //   setMin(test)
+  // }, [test])
   
   return (
     <div className='bg-gray-600 h-screen flex items-center'>
