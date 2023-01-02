@@ -23,28 +23,40 @@ function App() {
   
 
   setInterval(() => setSec(new Date().getSeconds() + 1), 1000);
-  setInterval(() => setMin(new Date().getMinutes() + 1), 60000)
+  setInterval(() => setMin(new Date().getMinutes()), 60000)
 
+  // useEffect(() => {
+  //   sec === 60 && setMin(min + 1);
+  // }, [sec])
+  
+  const hourExtra = (hour * 5 / 360) * 30;
+  const [minutes, setMinutes] = useState(0)
+
+  /**
+   * 
+   * 
+   * 
+   * 
+   * */ 
+
+
+  // console.log(sec * 6);
+
+  // console.log(hourExtra);
+
+  const test = min * 6 + (sec * (6/360))
+
+  useEffect(() => {
+    setMin(test)
+  }, [test])
   
   return (
     <div className='bg-gray-600 h-screen flex items-center'>
-
       <div className="relative mx-auto bg-gray-300 rounded-full w-80 h-80" id='container'>
-        <div className="absolute bg-black overflow-hidden w-[90%] h-0.5 top-0 bottom-0 left-0 right-0 m-auto border-0" id='secondBar' style={{rotate: sec * 6 + "deg"}}>
-          <div className="relative p-0 border-0 m-0">
-            <div className="absolute bg-gray-300 w-[40%] left-0 top-[-1px] right-0 h-2.5"></div>
-          </div>
-        </div>
-        <div className="absolute bg-black overflow-hidden w-[80%] h-1 top-0 bottom-0 left-0 right-0 m-auto border-0" id='minBar' style={{rotate: min * 6 + "deg"}}>
-          <div className="relative p-0 border-0 m-0">
-            <div className="absolute bg-gray-300 w-[40%] left-0 top-[-1px] right-0 h-2.5"></div>
-          </div>
-        </div>
-        <div className="absolute bg-black overflow-hidden w-[70%] h-2 top-0 bottom-0 left-0 right-0 m-auto border-0" id='bar' style={{ rotate: hour*30+"deg" }} >
-          <div className="relative p-0 border-0 m-0">
-            <div className="absolute bg-gray-300 w-[40%] left-0 top-[-1px] right-0 h-2.5"></div>
-          </div>
-        </div>
+        <span className='absolute top-0 bottom-0 left-0 right-0 m-auto inline-block w-3 h-3 bg-black rounded-full'></span>
+        <span className='absolute inline-block w-40 h-[5px] bg-black tick' style={{rotate: sec * 6 + "deg"}}></span>
+        <span className='absolute inline-block w-40 h-[5px] bg-black tick' style={{rotate: min * 6 + ((sec * 6) / 360) + "deg"}}></span>
+        <span className='absolute inline-block w-40 h-[5px] bg-black tick' style={{rotate: (hour * 30) + "deg"}}></span>
       </div>
     </div>
   );
