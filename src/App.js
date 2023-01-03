@@ -32,7 +32,7 @@ function App() {
   const hourExtra = (hour * 30) + (min / 2);
   const minExtra = (min*6) + (sec / 10);
 
-  const [audioPlay, setAudioPlay] = useState(false)
+  const [audioPlay, setAudioPlay] = useState(true)
   
   return (
     <div className='bg-gray-600'>
@@ -43,19 +43,21 @@ function App() {
           <span className='absolute inline-block w-36 h-[3px] bg-white minTick' style={{rotate: minExtra + "deg"}}></span>
           <span className='absolute inline-block w-32 h-[5px] bg-white hourTick' style={{rotate: hourExtra + "deg"}}></span>
         {/* {hour}:{min}:{sec} */}
-        {audioPlay 
-          ? 
-          <label htmlFor='handleAudio' onClick={() => document.getElementById("audio").muted = true}>Pause</label> 
-          : 
-          <label htmlFor='handleAudio' onClick={() => document.getElementById("audio").muted = false}>Play</label>}
-        <input type="checkbox" id="handleAudio" onChange={e => setAudioPlay(e.target.checked)} />
 
-        <audio controls className='hidden' autoPlay id="audio">
+        <audio controls className='hidden' autoPlay muted={audioPlay} id="audio">
           <source src={clock} type='audio/ogg' />
         </audio>
         </div>
       </div>
 
+      <div className='absolute top-3 right-3'>
+          <input type="checkbox" id="handleAudio" className='hidden' onChange={e => setAudioPlay(!e.target.checked)} />
+          {audioPlay 
+            ? 
+            <label className='px-3 py-2 rounded-md cursor-pointer bg-green-800 text-white' htmlFor='handleAudio'>Unmute</label> 
+            : 
+            <label className='px-3 py-2 rounded-md cursor-pointer bg-red-700 text-white' htmlFor='handleAudio'>Mute</label>}
+        </div>
       {/* <footer className='fixed bottom-0 text-center w-screen'>
         Sound Effect from <a href="https://pixabay.com/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=music&amp;utm_content=6069">Pixabay</a>
       </footer> */}
