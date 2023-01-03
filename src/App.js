@@ -1,5 +1,6 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './App.css';
+import clock from './assets/clock-ticking.ogg'
 
 function App() {
 
@@ -19,12 +20,19 @@ function App() {
   const hour = parseInt(time.split(":")[0])
   const [sec, setSec] = useState(date.getSeconds());
   const min = date.getMinutes();
+  const audio = document.getElementById("audio");
+
+  useEffect(() => {
+    document.getElementById("audio").play()
+  }, [sec])
   
 
   setInterval(() => setSec(new Date().getSeconds()), 1000);
   
   const hourExtra = (hour * 30) + (min / 2);
   const minExtra = (min*6) + (sec / 10);
+
+  const [audioPlay, setAudioPlay] = useState(false)
   
   return (
     <div className='bg-gray-600'>
@@ -35,6 +43,16 @@ function App() {
           <span className='absolute inline-block w-36 h-[3px] bg-white minTick' style={{rotate: minExtra + "deg"}}></span>
           <span className='absolute inline-block w-32 h-[5px] bg-white hourTick' style={{rotate: hourExtra + "deg"}}></span>
         {/* {hour}:{min}:{sec} */}
+        {audioPlay 
+          ? 
+          <label htmlFor='handleAudio' onClick={() => document.getElementById("audio").muted = true}>Pause</label> 
+          : 
+          <label htmlFor='handleAudio' onClick={() => document.getElementById("audio").muted = false}>Play</label>}
+        <input type="checkbox" id="handleAudio" onChange={e => setAudioPlay(e.target.checked)} />
+
+        <audio controls className='hidden' autoPlay id="audio">
+          <source src={clock} type='audio/ogg' />
+        </audio>
         </div>
       </div>
 
