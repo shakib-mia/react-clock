@@ -30,10 +30,11 @@
 }
 
 #container {
-  box-shadow: 0 0 10px #ccc;
-  background-image: url(./assets/clock.webp);
-  background-size: 120%;
-  background-position: center center;
+	background-image: url(./assets/clock.webp);
+	background-position: 50%;
+	background-size: 117%;
+	box-shadow: 0 0 10px #ccc;
+	background-position-y: -29px;
 }
 
 .secTick, .minTick, .hourTick {
