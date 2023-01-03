@@ -1,6 +1,6 @@
 # Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Live Site of this project [here](https://react-clock-shakib.netlify.app/).
 
 ## Available Scripts
 
