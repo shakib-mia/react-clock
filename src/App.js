@@ -5,8 +5,7 @@ import tick2 from './assets/tick2.ogg';
 import gongBell from "./assets/gong-bell.ogg"
 
 function App() {
-  const [audioPlay, setAudioPlay] = useState(true)
-  const [alarmPlay, setAlarmPlay] = useState(true)
+  const [audioPlay, setAudioPlay] = useState(true);
 
   function formatAMPM(date) {
     var hours = date.getHours();
@@ -24,26 +23,15 @@ function App() {
   const hour = parseInt(time.split(":")[0])
   const [sec, setSec] = useState(date.getSeconds());
   const min = date.getMinutes();
-  // const audio = document.getElementById('audio3');
 
   useEffect(() => {
-    // document.getElementById("audio").play()
     sec % 2 === 0 ? document.getElementById("audio1").play() : document.getElementById("audio2").play();
-    // console.log(sec);
   }, [sec])
-
-  // useEffect(() => {
-  //   audio.play()
-  // }, [audio])
-
-  // time === "11:25 am" && console.log("this is the time");
-  console.log(sec);
 
   if(sec === 0 && time === "6:44 pm") {
     document.getElementById("audio3").play();
   }
 
-  // time === "6:36 pm" && document.getElementById("audio3").play();
 
   
 
@@ -72,19 +60,18 @@ function App() {
         </div>
       </div>
 
-      <div className='absolute top-3 right-3'>
-          <div className="flex">
-            <aside></aside>
-            <aside>
-              <input type="checkbox" id="handleAudio" className='hidden' onChange={e => setAudioPlay(!e.target.checked)} />
-              {audioPlay 
-                ? 
-                <label className='px-3 py-2 rounded-md cursor-pointer bg-green-800 text-white' htmlFor='handleAudio'>Unmute</label> 
-                : 
-                <label className='px-3 py-2 rounded-md cursor-pointer bg-red-700 text-white' htmlFor='handleAudio'>Mute</label>}
-            </aside>
-          </div>
+      <div className='absolute top-3 right-0'>
+        <div className="flex">
+          <button className='px-3 py-2 mr-4 rounded-md cursor-pointer bg-red-700 text-white'>Set Alarm</button>
+          <input type="checkbox" id="handleAudio" className='hidden' onChange={e => setAudioPlay(!e.target.checked)} />
+          {audioPlay 
+            ? 
+            <label className='px-3 py-2 rounded-md cursor-pointer bg-green-800 text-white' htmlFor='handleAudio'>Unmute</label> 
+            : 
+            <label className='px-3 py-2 rounded-md cursor-pointer bg-red-700 text-white' htmlFor='handleAudio'>Mute</label>}
+
         </div>
+      </div>
       <footer className='fixed bottom-0 text-center w-screen'>
         Sound Effect from <a href="https://pixabay.com/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=music&amp;utm_content=6069">Pixabay</a>
       </footer>
