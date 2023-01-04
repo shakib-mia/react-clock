@@ -1,10 +1,12 @@
 import { useEffect, useState } from 'react';
 import './App.css';
-import clock from './assets/clock-ticking.ogg'
-import tick1 from './assets/tick1.ogg'
-import tick2 from './assets/tick2.ogg'
+import tick1 from './assets/tick1.ogg';
+import tick2 from './assets/tick2.ogg';
+import gongBell from "./assets/gong-bell.ogg"
 
 function App() {
+  const [audioPlay, setAudioPlay] = useState(true)
+  const [alarmPlay, setAlarmPlay] = useState(true)
 
   function formatAMPM(date) {
     var hours = date.getHours();
@@ -22,25 +24,33 @@ function App() {
   const hour = parseInt(time.split(":")[0])
   const [sec, setSec] = useState(date.getSeconds());
   const min = date.getMinutes();
-  const audio = document.getElementById("audio");
+  // const audio = document.getElementById('audio3');
 
   useEffect(() => {
     // document.getElementById("audio").play()
-    sec % 2 === 0 ? document.getElementById("audio1").play() : document.getElementById("audio2").play()
+    sec % 2 === 0 ? document.getElementById("audio1").play() : document.getElementById("audio2").play();
+    // console.log(sec);
   }, [sec])
 
-  time === "11:25 am" && console.log("this is the time");
-  useEffect(() => {
-    time === "11:27 am" && console.log("time's up");
-  }, [time])
+  // useEffect(() => {
+  //   audio.play()
+  // }, [audio])
+
+  // time === "11:25 am" && console.log("this is the time");
+  console.log(sec);
+
+  if(sec === 0 && time === "6:44 pm") {
+    document.getElementById("audio3").play();
+  }
+
+  // time === "6:36 pm" && document.getElementById("audio3").play();
+
   
 
   setInterval(() => setSec(new Date().getSeconds()), 1000);
   
   const hourExtra = (hour * 30) + (min / 2);
   const minExtra = (min*6) + (sec / 10);
-
-  const [audioPlay, setAudioPlay] = useState(true)
   
   return (
     <div className='bg-gray-600'>
@@ -50,14 +60,15 @@ function App() {
           <span className='absolute inline-block w-40 h-[1px] bg-red-900 secTick z-10' style={{rotate: sec * 6 + "deg"}}></span>
           <span className='absolute inline-block w-36 h-[3px] bg-white minTick' style={{rotate: minExtra + "deg"}}></span>
           <span className='absolute inline-block w-32 h-[5px] bg-white hourTick' style={{rotate: hourExtra + "deg"}}></span>
-        {/* {hour}:{min}:{sec} */}
-
-        <audio controls className='hidden' autoPlay muted={audioPlay} id="audio1">
-          <source src={tick1} type='audio/ogg' />
-        </audio>
-        <audio controls className='hidden' autoPlay muted={audioPlay} id="audio2">
-          <source src={tick2} type='audio/ogg' />
-        </audio>
+          <audio controls className='hidden' autoPlay muted={audioPlay} id="audio1">
+            <source src={tick1} type='audio/ogg' />
+          </audio>
+          <audio controls className='hidden' autoPlay muted={audioPlay} id="audio2">
+            <source src={tick2} type='audio/ogg' />
+          </audio>
+          <audio controls className="hidden" id="audio3">
+            <source src={gongBell} type='audio/ogg' />
+          </audio>
         </div>
       </div>
 
@@ -74,9 +85,9 @@ function App() {
             </aside>
           </div>
         </div>
-      {/* <footer className='fixed bottom-0 text-center w-screen'>
+      <footer className='fixed bottom-0 text-center w-screen'>
         Sound Effect from <a href="https://pixabay.com/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=music&amp;utm_content=6069">Pixabay</a>
-      </footer> */}
+      </footer>
     </div>
   );
 }
