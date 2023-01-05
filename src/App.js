@@ -33,6 +33,11 @@ function App() {
     var strTime = hours + ':' + minutes + ' ' + ampm;
     return strTime
   }
+
+  const handleSubmit = () => {
+    localStorage.setItem("time", alarmTime);
+  }
+
   const date = new Date()
   
   const time = formatAMPM(new Date());
@@ -57,8 +62,9 @@ function App() {
   return (
     <div className='bg-gray-600'>
       {alarmModal && <Modal
+        title="Set Alarm"
         SetAlarmModal={setAlarmModal} 
-        onSubmit={() => localStorage.setItem("time", alarmTime)}
+        onSubmit={handleSubmit}
         body={<>
           <div className="grid grid-cols-2 gap-4">
             <InputField label="Time" type="time" id="one" onChange={e => setAlarmTime(formatAMPM2(e.target.value))} />
