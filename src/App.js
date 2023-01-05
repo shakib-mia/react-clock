@@ -5,11 +5,14 @@ import tick2 from './assets/tick2.ogg';
 import gongBell from "./assets/gong-bell.ogg";
 import Modal from './components/Modal/Modal';
 import InputField from './components/InputField/InputField';
+import Message from './components/Message/Message';
 
 function App() {
   const [audioPlay, setAudioPlay] = useState(true);
   const [alarmModal, setAlarmModal] = useState(false);
   const [alarmTime, setAlarmTime] = useState('');
+  const [message, setMessage] = useState("");
+  const [showMessage, setShowMessage] = useState(true);
 
   
   function formatAMPM(date) {
@@ -36,6 +39,7 @@ function App() {
 
   const handleSubmit = () => {
     localStorage.setItem("time", alarmTime);
+    localStorage.setItem("message", message);
   }
 
   const date = new Date()
@@ -51,6 +55,7 @@ function App() {
 
   if(sec === 0 && time === localStorage.getItem("time")) {
     document.getElementById("audio3").play();
+    setShowMessage(true)
   }
   
 
@@ -61,6 +66,11 @@ function App() {
   
   return (
     <div className='bg-gray-600'>
+      {showMessage && <Message
+        message={message}
+      />}
+
+
       {alarmModal && <Modal
         title="Set Alarm"
         SetAlarmModal={setAlarmModal} 
@@ -68,7 +78,7 @@ function App() {
         body={<>
           <div className="grid grid-cols-2 gap-4">
             <InputField label="Time" type="time" id="one" onChange={e => setAlarmTime(formatAMPM2(e.target.value))} />
-            <InputField label="Label" id="two" placeholder="Text" onChange={e => console.log(e.target.value)} />
+            <InputField label="Label" id="two" placeholder="Text" onChange={e => setMessage(e.target.value)} />
           </div>
         </>} 
       />}
