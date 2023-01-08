@@ -12,7 +12,7 @@ function App() {
   const [alarmModal, setAlarmModal] = useState(false);
   const [alarmTime, setAlarmTime] = useState('');
   const [message, setMessage] = useState("");
-  const [showMessage, setShowMessage] = useState(true);
+  const [showMessage, setShowMessage] = useState(false);
 
   
   function formatAMPM(date) {
@@ -40,6 +40,7 @@ function App() {
   const handleSubmit = () => {
     localStorage.setItem("time", alarmTime);
     localStorage.setItem("message", message);
+    setAlarmModal(false)
   }
 
   const date = new Date()
@@ -53,10 +54,12 @@ function App() {
     sec % 2 === 0 ? document.getElementById("audio1").play() : document.getElementById("audio2").play();
   }, [sec])
 
-  if(sec === 0 && time === localStorage.getItem("time")) {
-    document.getElementById("audio3").play();
-    setShowMessage(true)
-  }
+  useEffect(() => {
+    if(sec === 0 && time === localStorage.getItem("time")) {
+      document.getElementById("audio3").play();
+      setShowMessage(true)
+    }
+  }, [sec, time])
   
 
   setInterval(() => setSec(new Date().getSeconds()), 1000);
@@ -68,6 +71,7 @@ function App() {
     <div className='bg-gray-600'>
       {showMessage && <Message
         message={message}
+        setShowMessage={setShowMessage}
       />}
 
 
@@ -84,10 +88,10 @@ function App() {
       />}
 
       <div className='h-screen flex items-center'>
-        <div className="relative mx-auto bg-gray-300 rounded-full w-80 h-80" id='container'>
+        <div className="relative mx-auto bg-gray-300 rounded-full w-[30rem] h-[30rem]" id='container'>
           <span className='absolute top-0 bottom-0 left-0 right-0 m-auto inline-block w-3 h-3 bg-red-900 z-50 rounded-full'></span>
-          <span className='absolute inline-block w-40 h-[1px] bg-red-900 secTick z-10' style={{rotate: sec * 6 + "deg"}}></span>
-          <span className='absolute inline-block w-36 h-[3px] bg-white minTick' style={{rotate: minExtra + "deg"}}></span>
+          <span className='absolute inline-block w-48 h-[1px] bg-red-900 secTick z-10' style={{rotate: sec * 6 + "deg"}}></span>
+          <span className='absolute inline-block w-44 h-[3px] bg-white minTick' style={{rotate: minExtra + "deg"}}></span>
           <span className='absolute inline-block w-32 h-[5px] bg-white hourTick' style={{rotate: hourExtra + "deg"}}></span>
           <audio controls className='hidden' autoPlay muted={audioPlay} id="audio1">
             <source src={tick1} type='audio/ogg' />

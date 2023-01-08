@@ -5,17 +5,17 @@
   transform: rotate(-90deg);
   top: 0;
   bottom: 0;
-  left: 140px;
+  left: 172px;
   right: 0;
   margin: auto;
   /* transition: all 0.5s; */
 }
 .minTick {
-  transform-origin: 10px center;
+  transform-origin: 11px center;
   transform: rotate(-90deg);
   top: 0;
   bottom: 0;
-  left: 121px;
+  left: 153.5px;
   right: 0;
   margin: auto;
   /* transition: all 0.5s; */
@@ -25,7 +25,7 @@
   transform: rotate(-90deg);
   top: 0;
   bottom: 0;
-  left: 107px;
+  left: 108px;
   right: 0;
   margin: auto;
   /* transition: all 0.5s; */
@@ -37,7 +37,7 @@
 	background-size: 117%;
   font-family: 'alarm clock', sans-serif;
 	box-shadow: 0 0 10px #ccc;
-	background-position-y: -29px;
+	/* background-position-y: -29px; */
 }
 
 .secTick, .minTick, .hourTick {

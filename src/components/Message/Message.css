@@ -1,0 +1,4 @@
+#message-container {
+    transition: all 1s ease;
+   /* animation: animation 1s ease 0 1s direction fill-mode; */
+}
